@@ -1248,6 +1248,8 @@ void ChildSession::loKitCallback(const int type, const std::string& payload)
         break;
     case LOK_CALLBACK_DIALOG_CHILD:
         sendTextFrame("dialogchild: " + payload);
+    case LOK_CALLBACK_RULER_UPDATE:
+        sendTextFrame("rulerupdate: " + payload);
         break;
     default:
         LOG_ERR("Unknown callback event (" << type << "): " << payload);

@@ -165,6 +165,10 @@ L.Control.Menubar = L.Control.extend({
 					{name: _('Cell'), type: 'unocommand', uno: '.uno:EntireCell'}]},
 					{name: _('Merge cells'), type: 'unocommand', uno: '.uno:MergeCells'}]
 			},
+			{name: _('Tools'), id: 'tools', type: 'menu', menu: [
+				{name: _('Spelling and Grammar'), uno: '.uno:SpellingAndGrammarDialog', type: 'unocommand'},
+				{name: _('Word count'), uno: '.uno:WordCountDialog', type: 'unocommand'}]
+			},
 			{name: _('Help'), id: 'help', type: 'menu', menu: [
 				{name: _('Keyboard shortcuts'), id: 'keyboard-shortcuts', type: 'action'},
 				{name: _('About'), id: 'about', type: 'action'}]

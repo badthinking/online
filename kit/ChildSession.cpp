@@ -1243,6 +1243,12 @@ void ChildSession::loKitCallback(const int type, const std::string& payload)
     case LOK_CALLBACK_CELL_ADDRESS:
         sendTextFrame("celladdress: " + payload);
         break;
+    case LOK_CALLBACK_DIALOG:
+        sendTextFrame("dialog: " + payload);
+        break;
+    case LOK_CALLBACK_DIALOG_CHILD:
+        sendTextFrame("dialogchild: " + payload);
+        break;
     default:
         LOG_ERR("Unknown callback event (" << type << "): " << payload);
     }

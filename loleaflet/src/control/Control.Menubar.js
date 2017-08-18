@@ -166,8 +166,8 @@ L.Control.Menubar = L.Control.extend({
 					{name: _('Merge cells'), type: 'unocommand', uno: '.uno:MergeCells'}]
 			},
 			{name: _('Tools'), id: 'tools', type: 'menu', menu: [
-				{name: _('Spelling and Grammar'), uno: '.uno:SpellingAndGrammarDialog', type: 'unocommand'},
-				{name: _('Word count'), uno: '.uno:WordCountDialog', type: 'unocommand'}]
+				{name: _('Spelling and Grammar'), id: '.uno:SpellingAndGrammarDialog', type: 'dialog'},
+				{name: _('Word count'), id: '.uno:WordCountDialog', type: 'dialog'}]
 			},
 			{name: _('Help'), id: 'help', type: 'menu', menu: [
 				{name: _('Keyboard shortcuts'), id: 'keyboard-shortcuts', type: 'action'},
@@ -692,6 +692,8 @@ L.Control.Menubar = L.Control.extend({
 			map.sendUnoCommand(unoCommand);
 		} else if (type === 'action') {
 			self._executeAction(item);
+		} else if (type === 'dialog') {
+			map.sendDialogCommand($(item).data('id'));
 		}
 
 		if ($(item).data('id') !== 'insertcomment')
@@ -765,6 +767,9 @@ L.Control.Menubar = L.Control.extend({
 			} else if (menu[i].type === 'unocommand') {
 				$(aItem).data('type', 'unocommand');
 				$(aItem).data('uno', menu[i].uno);
+			} else if (menu[i].type === 'dialog') {
+				$(aItem).data('type', 'dialog');
+				$(aItem).data('id', menu[i].id);
 			} else if (menu[i].type === 'separator') {
 				$(aItem).addClass('separator');
 			} else if (menu[i].type === 'action') {

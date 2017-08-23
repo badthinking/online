@@ -1174,6 +1174,7 @@ L.TileLayer = L.GridLayer.extend({
 		var dlgHeight = command.height;
 
 		this._map.fire('dialog', {
+			id: command.id,
 			dialog: img,
 			// TODO: add id too
 			width: dlgWidth,
